@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     String process, operator;
     int lenghtsecondNumber;
     boolean btnEqualPressed = false;
+    boolean zeroPressed = false;
     TextView inputText, outputText;
     private String input, output, newOutput;
     private Button ac, del, div, mul, add, sub, equ, one, two, three, four, five, six, seven, eight, nine, zero;
@@ -78,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
                         lenghtsecondNumber++;
                     }
                 }
+                zeroPressed = true;
             }
         });
 
@@ -92,7 +94,12 @@ public class MainActivity extends AppCompatActivity {
                     btnEqualPressed = false;
                 } else {
                     process = inputText.getText().toString();
-                    inputText.setText(process + "1");
+                    if (zeroPressed) {
+                        inputText.setText(process.substring(0, process.length()-1) + "1");
+                        zeroPressed = false;
+                    } else {
+                        inputText.setText(process + "1");
+                    }
                     if (operator != null){
                         lenghtsecondNumber++;
                     }
@@ -111,7 +118,12 @@ public class MainActivity extends AppCompatActivity {
                     btnEqualPressed = false;
                 } else {
                     process = inputText.getText().toString();
-                    inputText.setText(process + "2");
+                    if (zeroPressed) {
+                        inputText.setText(process.substring(0, process.length()-1) + "2");
+                        zeroPressed = false;
+                    } else {
+                        inputText.setText(process + "2");
+                    }
                     if (operator != null){
                         lenghtsecondNumber++;
                     }
@@ -130,7 +142,12 @@ public class MainActivity extends AppCompatActivity {
                     btnEqualPressed = false;
                 } else {
                     process = inputText.getText().toString();
-                    inputText.setText(process + "3");
+                    if (zeroPressed) {
+                        inputText.setText(process.substring(0, process.length()-1) + "3");
+                        zeroPressed = false;
+                    } else {
+                        inputText.setText(process + "3");
+                    }
                     if (operator != null){
                         lenghtsecondNumber++;
                     }
@@ -149,7 +166,12 @@ public class MainActivity extends AppCompatActivity {
                     btnEqualPressed = false;
                 } else {
                     process = inputText.getText().toString();
-                    inputText.setText(process + "4");
+                    if (zeroPressed) {
+                        inputText.setText(process.substring(0, process.length()-1) + "4");
+                        zeroPressed = false;
+                    } else {
+                        inputText.setText(process + "4");
+                    }
                     if (operator != null){
                         lenghtsecondNumber++;
                     }
@@ -168,7 +190,12 @@ public class MainActivity extends AppCompatActivity {
                     btnEqualPressed = false;
                 } else {
                     process = inputText.getText().toString();
-                    inputText.setText(process + "5");
+                    if (zeroPressed) {
+                        inputText.setText(process.substring(0, process.length()-1) + "5");
+                        zeroPressed = false;
+                    } else {
+                        inputText.setText(process + "5");
+                    }
                     if (operator != null){
                         lenghtsecondNumber++;
                     }
@@ -187,7 +214,12 @@ public class MainActivity extends AppCompatActivity {
                     btnEqualPressed = false;
                 } else {
                     process = inputText.getText().toString();
-                    inputText.setText(process + "6");
+                    if (zeroPressed) {
+                        inputText.setText(process.substring(0, process.length()-1) + "6");
+                        zeroPressed = false;
+                    } else {
+                        inputText.setText(process + "6");
+                    }
                     if (operator != null){
                         lenghtsecondNumber++;
                     }
@@ -206,7 +238,12 @@ public class MainActivity extends AppCompatActivity {
                     btnEqualPressed = false;
                 } else {
                     process = inputText.getText().toString();
-                    inputText.setText(process + "7");
+                    if (zeroPressed) {
+                        inputText.setText(process.substring(0, process.length()-1) + "7");
+                        zeroPressed = false;
+                    } else {
+                        inputText.setText(process + "7");
+                    }
                     if (operator != null){
                         lenghtsecondNumber++;
                     }
@@ -225,7 +262,12 @@ public class MainActivity extends AppCompatActivity {
                     btnEqualPressed = false;
                 } else {
                     process = inputText.getText().toString();
-                    inputText.setText(process + "8");
+                    if (zeroPressed) {
+                        inputText.setText(process.substring(0, process.length()-1) + "8");
+                        zeroPressed = false;
+                    } else {
+                        inputText.setText(process + "8");
+                    }
                     if (operator != null){
                         lenghtsecondNumber++;
                     }
@@ -244,7 +286,12 @@ public class MainActivity extends AppCompatActivity {
                     btnEqualPressed = false;
                 } else {
                     process = inputText.getText().toString();
-                    inputText.setText(process + "9");
+                    if (zeroPressed) {
+                        inputText.setText(process.substring(0, process.length()-1) + "9");
+                        zeroPressed = false;
+                    } else {
+                        inputText.setText(process + "9");
+                    }
                     if (operator != null){
                         lenghtsecondNumber++;
                     }
@@ -371,21 +418,28 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String word = inputText.getText().toString();
                 int input = word.length();
-                if (input > 0) {
-                    inputText.setText(word.substring(0, input -1));
-                    div.setEnabled(true);
-                    sub.setEnabled(true);
-                    mul.setEnabled(true);
-                    add.setEnabled(true);
-                    if (lenghtsecondNumber==0){
-                        operator=null;
-                        lenghtsecondNumber=0;
+                if (btnEqualPressed) {
+                    inputText.setText("");
+                    lenghtsecondNumber = 0;
+                    operator = null;
+                    btnEqualPressed = false;
+                } else {
+                    if (input > 0) {
+                        inputText.setText(word.substring(0, input -1));
                         div.setEnabled(true);
                         sub.setEnabled(true);
                         mul.setEnabled(true);
                         add.setEnabled(true);
-                    } else {
-                        lenghtsecondNumber--;
+                        if (lenghtsecondNumber==0){
+                            operator=null;
+                            lenghtsecondNumber=0;
+                            div.setEnabled(true);
+                            sub.setEnabled(true);
+                            mul.setEnabled(true);
+                            add.setEnabled(true);
+                        } else {
+                            lenghtsecondNumber--;
+                        }
                     }
                 }
             }
