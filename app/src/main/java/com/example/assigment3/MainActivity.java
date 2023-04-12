@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         inputText = (TextView) findViewById(R.id.input);
         outputText = (TextView) findViewById(R.id.output);
 
+
         ac = (Button) findViewById(R.id.ac);
         del = (Button) findViewById(R.id.delete);
         div = (Button) findViewById(R.id.division);
@@ -100,6 +101,7 @@ public class MainActivity extends AppCompatActivity {
                         zeroPressed = false;
                     } else {
                         inputText.setText(process + "1");
+                        lenghtsecondNumber = 1;
                     }
                     if (operator != null){
                         lenghtsecondNumber++;
@@ -125,6 +127,7 @@ public class MainActivity extends AppCompatActivity {
                         zeroPressed = false;
                     } else {
                         inputText.setText(process + "2");
+                        lenghtsecondNumber = 1;
                     }
                     if (operator != null){
                         lenghtsecondNumber++;
@@ -150,6 +153,7 @@ public class MainActivity extends AppCompatActivity {
                         zeroPressed = false;
                     } else {
                         inputText.setText(process + "3");
+                        lenghtsecondNumber = 1;
                     }
                     if (operator != null){
                         lenghtsecondNumber++;
@@ -175,6 +179,7 @@ public class MainActivity extends AppCompatActivity {
                         zeroPressed = false;
                     } else {
                         inputText.setText(process + "4");
+                        lenghtsecondNumber = 1;
                     }
                     if (operator != null){
                         lenghtsecondNumber++;
@@ -200,6 +205,7 @@ public class MainActivity extends AppCompatActivity {
                         zeroPressed = false;
                     } else {
                         inputText.setText(process + "5");
+                        lenghtsecondNumber = 1;
                     }
                     if (operator != null){
                         lenghtsecondNumber++;
@@ -225,6 +231,7 @@ public class MainActivity extends AppCompatActivity {
                         zeroPressed = false;
                     } else {
                         inputText.setText(process + "6");
+                        lenghtsecondNumber = 1;
                     }
                     if (operator != null){
                         lenghtsecondNumber++;
@@ -250,6 +257,7 @@ public class MainActivity extends AppCompatActivity {
                         zeroPressed = false;
                     } else {
                         inputText.setText(process + "7");
+                        lenghtsecondNumber = 1;
                     }
                     if (operator != null){
                         lenghtsecondNumber++;
@@ -271,10 +279,11 @@ public class MainActivity extends AppCompatActivity {
                     process = inputText.getText().toString();
                     if (zeroPressed && lenghtsecondNumber == 1) {
                         inputText.setText(process.substring(0, process.length()-1) + "8");
-                        lenghtsecondNumber = 0;
+                        lenghtsecondNumber = 1;
                         zeroPressed = false;
                     } else {
                         inputText.setText(process + "8");
+                        lenghtsecondNumber = 1;
                     }
                     if (operator != null){
                         lenghtsecondNumber++;
@@ -296,10 +305,11 @@ public class MainActivity extends AppCompatActivity {
                     process = inputText.getText().toString();
                     if (zeroPressed && lenghtsecondNumber == 1) {
                         inputText.setText(process.substring(0, process.length()-1) + "9");
-                        lenghtsecondNumber = 0;
+                        lenghtsecondNumber = 1;
                         zeroPressed = false;
                     } else {
                         inputText.setText(process + "9");
+                        lenghtsecondNumber = 1;
                     }
                     if (operator != null){
                         lenghtsecondNumber++;
@@ -319,7 +329,8 @@ public class MainActivity extends AppCompatActivity {
                     lenghtsecondNumber = 0;
                     btnEqualPressed = false;
                 } else {
-                    if (lenghtsecondNumber == 0) {
+                    String input = inputText.getText().toString();
+                    if (!input.isEmpty()) {
                         process = inputText.getText().toString();
                         if(operator == null){
                             inputText.setText(process + "+");
@@ -347,7 +358,8 @@ public class MainActivity extends AppCompatActivity {
                     lenghtsecondNumber = 0;
                     btnEqualPressed = false;
                 } else {
-                    if (lenghtsecondNumber == 0){
+                    String input = inputText.getText().toString();
+                    if (!input.isEmpty()){
                         process = inputText.getText().toString();
                         if(operator == null){
                             inputText.setText(process + "-");
@@ -376,7 +388,8 @@ public class MainActivity extends AppCompatActivity {
                     lenghtsecondNumber = 0;
                     btnEqualPressed = false;
                 } else {
-                    if (lenghtsecondNumber == 0){
+                    String input = inputText.getText().toString();
+                    if (!input.isEmpty()){
                         process = inputText.getText().toString();
                         if(operator == null){
                             inputText.setText(process + "×");
@@ -404,11 +417,12 @@ public class MainActivity extends AppCompatActivity {
                     lenghtsecondNumber = 0;
                     btnEqualPressed = false;
                 } else {
-                    if (lenghtsecondNumber == 0){
+                    String input = inputText.getText().toString();
+                    if (!input.isEmpty()){
                         process = inputText.getText().toString();
                         if(operator == null){
                             inputText.setText(process + "÷");
-                        }else {
+                        } else {
                             inputText.setText(process.substring(0,process.length()-1)+ "÷");
                         }
                         operator = "÷";
